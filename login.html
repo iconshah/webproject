@@ -38,28 +38,14 @@
               <h5 class="text-primary">Sign in to continue.</h5>
             </div>
 
-            <!-- <div class="col-12">
-              <div
-                class="alert alert-success alert-dismissible fade show"
-                role="alert"
-              >
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="alert"
-                  aria-label="Close"
-                ></button>
-              </div>
-            </div> -->
-
             <div class="mt-4">
               <form method="POST" id="loginForm">
                 <div class="mb-3 text-center">
-                  <div class="position-relative auth-pass-inputgroup mb-0">
+                  <div class="position-relative mb-0">
                     <input
                       type="text"
                       name="username"
-                      class="form-control pe-5 username-input rounded-pill text-left"
+                      class="form-control pe-5 rounded-pill text-left"
                       placeholder="Enter username"
                       id="username"
                     />
@@ -116,25 +102,25 @@
                   </div>
                   <br />
                   <div class="mt-4">
-                    <input
-                      class="form-check-input privacy-check rounded-pill"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="Please click here and agree to ___ Compliance and Policy."
-                      type="checkbox"
-                      id="formCheck15"
-                    />
-                    <label
-                      class="form-check-label text-muted fs-6"
-                      for="formCheck15"
-                    >
-                      I agree to
-                      <a target="_blank" href="#"
-                        >Compliance And Policy.<span class="text-danger"
-                          >*</span
-                        ></a
+                    <div class="">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                      />
+                      <label
+                        class="form-check-label text-muted fs-6"
+                        for="formCheck"
                       >
-                    </label>
+                        I agree to
+                        <a target="_blank" href="#"
+                          >Compliance And Policy.<span class="text-danger"
+                            >*</span
+                          ></a
+                        >
+                      </label>
+                    </div>
                   </div>
                 </div>
 
@@ -150,62 +136,6 @@
                     ></i
                     >Continue
                   </button>
-
-                  <button
-                    type="button"
-                    class="btn btn-success btn-label waves-effect waves-light rounded-pill btn-load w-100 d-flex justify-content-center d-none"
-                    id="loaderBtn"
-                  >
-                    <span class="d-flex align-items-center">
-                      <span class="spinner-border flex-shrink-0" role="status">
-                        <span class="visually-hidden"></span>
-                      </span>
-                      <span class="flex-grow-1 ms-2"> </span>
-                    </span>
-                  </button>
-                  <div
-                    class="justify-content-between d-none login-action-content"
-                  >
-                    <div class="d-lg-flex gap-3">
-                      <button
-                        type="button"
-                        id="go-back"
-                        class="btn btn-success btn-label w-100 w-sm-50 waves-effect waves-light rounded-pill nexttab"
-                        data-nexttab="pills-experience-tab"
-                      >
-                        <i
-                          class="ri-arrow-go-back-line label-icon align-middle rounded-pill fs-16 me-2"
-                        ></i
-                        >Go back
-                      </button>
-                      <button
-                        type="submit"
-                        id="login-btn"
-                        class="mt-2 mt-lg-0 main-btn btn btn-success btn-label w-100 w-sm-50 waves-effect waves-light rounded-pill nexttab"
-                        data-nexttab="pills-experience-tab"
-                      >
-                        <i
-                          class="ri-login-circle-line label-icon align-middle rounded-pill fs-16 me-2"
-                        ></i
-                        >Login
-                      </button>
-                      <button
-                        type="button"
-                        class="btn mt-2 mt-lg-0 btn-success btn-label waves-effect waves-light rounded-pill btn-load w-100 w-sm-50 d-flex justify-content-center d-none"
-                        id="loginLoaderBtn"
-                      >
-                        <span class="d-flex align-items-center">
-                          <span
-                            class="spinner-border flex-shrink-0"
-                            role="status"
-                          >
-                            <span class="visually-hidden"></span>
-                          </span>
-                          <span class="flex-grow-1 ms-2"> </span>
-                        </span>
-                      </button>
-                    </div>
-                  </div>
                 </div>
               </form>
             </div>
