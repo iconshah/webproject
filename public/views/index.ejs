@@ -1,17 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Home</title>
-</head>
-<body>
-    <h1>Welcome to the page</h1>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      body {
+        background-color: black;
+      }
+      .btn-rounded {
+        border-radius: 20px;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      a,
+      p {
+        color: white;
+      }
+      #navBar a {
+        color: white;
+      }
+      .owl-carousel span {
+        /* background-color: white; */
+        color: white !important;
+        font-size: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="navBar">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            ><img
+              src="./images/2071350_273211-P5XDWI-293.jpg"
+              alt="logo"
+              width="80px"
+              height="50px"
+            />
+          </a>
+          <button
+            class="btn btn-success btn-rounded d-md-none d-block"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions"
+          >
+            Account
+          </button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span
+              class="navbar-toggler-icon p-3"
+              style="background-color: white; width: 40px; border-radius: 10%"
+            ></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">NBA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">FOOTBALL</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  F1
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item text-dark" href="#">Rumour</a>
+                  </li>
+                  <li><a class="dropdown-item text-dark" href="#">News</a></li>
+                  <li>
+                    <a class="dropdown-item text-dark" href="#">Trend</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <button
+              class="btn btn-success btn-rounded d-none d-md-block"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasWithBothOptions"
+              aria-controls="offcanvasWithBothOptions"
+            >
+              Account
+            </button>
+          </div>
+        </div>
+      </nav>
+    </section>
+
+    <!-- OFFCANVAS FOR THE ACCOUNT BUTTON -->
+    <div
+      class="offcanvas offcanvas-end" style="background-color: rgb(0, 0, 0, 0.3);"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column align-items-center">
+        <a href="/users/login" target="_blank"
+          ><button class="btn btn-success btn-rounded w-100 mb-2">
+            Login
+          </button></a
+        >
+        <a href="/users/register" target="_blank"
+          ><button class="btn btn-success btn-rounded w-100 mb-2">
+            Sign Up
+          </button></a
+        >
+        <a href="/users/login" target="_blank"
+          ><button class="btn btn-success btn-rounded mb-2">Get Help ?</button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upcoming  -->
+    <section id="upcoming">
+      <div class="container-fluid p-3 py-5" style="background-color: #1d1a1e">
+        <div class="row">
+          <h3>Upcoming This Week</h3>
+          <div class="col-12 col-md-2">
+            <div class="card bg-light">
+              <div class="card-body">
+                <span>April 1 (Date)</span><br /><br />
+                <span
+                  >at <strong>5:50 pm </strong> (time) in
+                  <strong>Oulu</strong> (location)</span
+                ><br /><br />
+                <strong>CLE <span class="text-muted">vs</span> DEN</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-2">
+            <div class="card bg-light">
+              <div class="card-body">
+                <span>April 1 (Date)</span><br /><br />
+                <span
+                  >at <strong>5:50 pm </strong> (time) in
+                  <strong>Oulu</strong> (location)</span
+                ><br /><br />
+                <strong>CLE <span class="text-muted">vs</span> DEN</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-2">
+            <div class="card bg-light">
+              <div class="card-body">
+                <span>April 1 (Date)</span><br /><br />
+                <span
+                  >at <strong>5:50 pm </strong> (time) in
+                  <strong>Oulu</strong> (location)</span
+                ><br /><br />
+                <strong>CLE <span class="text-muted">vs</span> DEN</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-2">
+            <div class="card bg-light">
+              <div class="card-body">
+                <span>April 1 (Date)</span><br /><br />
+                <span
+                  >at <strong>5:50 pm </strong> (time) in
+                  <strong>Oulu</strong> (location)</span
+                ><br /><br />
+                <strong>CLE <span class="text-muted">vs</span> DEN</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-2">
+            <div class="card bg-light">
+              <div class="card-body">
+                <span>April 1 (Date)</span><br /><br />
+                <span
+                  >at <strong>5:50 pm </strong> (time) in
+                  <strong>Oulu</strong> (location)</span
+                ><br /><br />
+                <strong>CLE <span class="text-muted">vs</span> DEN</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-2">
+            <div class="card bg-light">
+              <div class="card-body">
+                <span>April 1 (Date)</span><br /><br />
+                <span
+                  >at <strong>5:50 pm </strong> (time) in
+                  <strong>Oulu</strong> (location)</span
+                ><br /><br />
+                <strong>CLE <span class="text-muted">vs</span> DEN</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top Picks  -->
+    <section id="topPicks">
+      <div class="container py-5 mb-5">
+        <div class="row">
+          <div class="col-12 col-md-3 text-center">
+            <iframe
+              src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe
+            ><br />
+            <p>Los Angeles Lakers vs Milwaukee Bucks</p>
+            <iframe
+              src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe
+            ><br />
+            <p>Los Angeles Lakers vs Milwaukee Bucks</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <iframe
+              style="width: 100%; height: 100%"
+              src="https://www.youtube.com/embed/q53hqOkiPos?si=BodfS1QiQxeYWdqu"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+            <br />
+            <h2>Heading whatever comes here</h2>
+          </div>
+          <div class="col-12 col-md-3 mt-sm-5">
+            <h1>Top Headlines</h1>
+            <h4 class="mb-0 pb-0">NBA</h4>
+            <p class="fw-5 mb-2">Lorem ipsum dolor sit amet.</p>
+            <h4 class="mb-0 pb-0">FOOTBALL</h4>
+            <p class="fw-5 mb-2">Lorem ipsum dolor sit amet.</p>
+            <h4 class="mb-0 pb-0">F1</h4>
+            <p class="fw-5 mb-2">Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="highlights" style="background-color: #1d1a1e">
+      <div class="container py-5">
+        <div class="row">
+          <h1>Highlights</h1>
+          <div class="owl-carousel owl-theme">
+            <div class="item m-2">
+              <iframe
+                style="height: 100%; width: 100%"
+                src="https://www.youtube.com/embed/ADs8tvU2xDc?si=O-KqOzJBLBE3JAqW"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="item m-2">
+              <iframe
+                style="height: 100%; width: 100%"
+                src="https://www.youtube.com/embed/ADs8tvU2xDc?si=O-KqOzJBLBE3JAqW"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="item m-2">
+              <iframe
+                style="height: 100%; width: 100%"
+                src="https://www.youtube.com/embed/ADs8tvU2xDc?si=O-KqOzJBLBE3JAqW"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="item m-2">
+              <iframe
+                style="height: 100%; width: 100%"
+                src="https://www.youtube.com/embed/ADs8tvU2xDc?si=O-KqOzJBLBE3JAqW"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="item m-2">
+              <iframe
+                style="height: 100%; width: 100%"
+                src="https://www.youtube.com/embed/ADs8tvU2xDc?si=O-KqOzJBLBE3JAqW"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="item m-2">
+              <iframe
+                style="height: 100%; width: 100%"
+                src="https://www.youtube.com/embed/ADs8tvU2xDc?si=O-KqOzJBLBE3JAqW"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="item m-2">
+              <iframe
+                style="height: 100%; width: 100%"
+                src="https://www.youtube.com/embed/ADs8tvU2xDc?si=O-KqOzJBLBE3JAqW"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="item m-2">
+              <iframe
+                style="height: 100%; width: 100%"
+                src="https://www.youtube.com/embed/ADs8tvU2xDc?si=O-KqOzJBLBE3JAqW"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="item m-2">
+              <iframe
+                style="height: 100%; width: 100%"
+                src="https://www.youtube.com/embed/ADs8tvU2xDc?si=O-KqOzJBLBE3JAqW"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="item m-2">
+              <iframe
+                style="height: 100%; width: 100%"
+                src="https://www.youtube.com/embed/ADs8tvU2xDc?si=O-KqOzJBLBE3JAqW"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h1>Home</h1>
     <p>Click <a href="/users/login">here</a> to login</p>
     <p>Click <a href="/users/register">here</a> to register</p>
     <p>Click <a href="/users/forgot-password">here</a> to reset password</p>
     <p>Click <a href="/users/profile">here</a> to view profile</p>
     <p>Click <a href="/users/logout">here</a> to logout</p>
     <p>Click <a href="/change-password">here</a> to change password</p>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      $(".owl-carousel").owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          600: {
+            items: 3,
+          },
+          1000: {
+            items: 5,
+          },
+        },
+      });
+    </script>
+  </body>
 </html>
