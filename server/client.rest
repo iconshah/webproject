@@ -1,0 +1,10 @@
+### email confirmation
+get  http://localhost:3000/users/email-confirmation
+
+### post email confirmation
+post http://localhost:3000/users/email-confirmation
+Content-Type: application/json
+
+{
+    "email": "stha.roman20@gmail.com"
+}
