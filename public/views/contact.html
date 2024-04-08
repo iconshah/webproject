@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .contact-box {
+            width: 90%;
+            margin: 50px auto;
+            background-color:#2f4f4f;
+            overflow: hidden;
+        }
+
+        .title {
+            font-size: 40px;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .text {
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .info {
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .info div {
+            background-color: #5fa0a0;
+            margin-bottom: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .form {
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        input,
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            border: none;
+            background-color: #ffb517;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 3px;
+            color: #2f4f4f;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button:hover {
+            background-color: #4c6868;
+            color: #ffb517;
+        }
+
+        @media (max-width: 768px) {
+            .info,
+            .form {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contact-box">
+    <p class="title">Contact Us</p>
+    <p class="text"><!-- Add your text here --></p>
+    <div class="container">
+        <div class="info">
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>House No. 4B, street address ylliopilantie, City Oulu</p>
+            </div>
+            <div class="email">
+                <i class="fas fa-envelope"></i>
+                <p>rahulkumarkalwar40@gmail.com</p>
+            </div>
+            <div class="contact">
+                <i class="fas fa-phone-alt"></i>
+                <p>+358 41 3626067</p>
+            </div>
+        </div>
+        <form class="form" action="#" method="POST">
+            <input type="text" name="name" placeholder="Name">
+            <input type="email" name="email" placeholder="Email">
+            <input type="text" name="subject" placeholder="Subject">
+            <textarea rows="5" name="message" placeholder="Your Message"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
