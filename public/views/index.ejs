@@ -50,12 +50,26 @@
         color: white !important;
         font-size: 35px;
       }
+      .navbar-fixed-top {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: black;
+      }
+      iframe{
+        border-radius: 15px;
+      }
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <section id="navBar">
     <%- include('navbar') %> <!-- Pass the user variable here -->
 
+=======
+    <section id="navBar" class="navbar-fixed-top">
+>>>>>>> bec6172c35623c9b6ec602b5a86e77380bec9d83
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"
@@ -97,6 +111,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">FOOTBALL</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/public/views/about.html">ABOUT US</a>
+              </li>
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -134,7 +151,8 @@
 
     <!-- OFFCANVAS FOR THE ACCOUNT BUTTON -->
     <div
-      class="offcanvas offcanvas-end" style="background-color: rgb(0, 0, 0, 0.3);"
+      class="offcanvas offcanvas-end"
+      style="background-color: rgb(0, 0, 0, 0.3)"
       data-bs-scroll="true"
       tabindex="-1"
       id="offcanvasWithBothOptions"
@@ -167,7 +185,7 @@
     </div>
 
     <!-- Upcoming  -->
-    <section id="upcoming">
+    <section id="upcoming" class="mt-5">
       <div class="container-fluid p-3 py-5" style="background-color: #1d1a1e">
         <div class="row">
           <h3>Upcoming This Week</h3>
@@ -286,7 +304,7 @@
             <br />
             <h2>Heading whatever comes here</h2>
           </div>
-          <div class="col-12 col-md-3 mt-sm-5">
+          <div class="col-12 col-md-3 mt-5">
             <h1>Top Headlines</h1>
             <h4 class="mb-0 pb-0">NBA</h4>
             <p class="fw-5 mb-2">Lorem ipsum dolor sit amet.</p>
@@ -299,6 +317,7 @@
       </div>
     </section>
 
+    <!-- Highlights  -->
     <section id="highlights" style="background-color: #1d1a1e">
       <div class="container py-5">
         <div class="row">
@@ -414,6 +433,161 @@
                 allowfullscreen
               ></iframe>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Men Sports -->
+    <section id="men-sports">
+      <div class="container py-5">
+        <div class="row">
+          <h2>Men's Sport</h2>
+          <div class="col-12 col-md-5">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="col-12 col-md-7">
+            <div class="d-flex flex-wrap justify-content-center">
+              <div class="p-3">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div class="p-3">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div class="p-3">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div class="p-3">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Women Sports -->
+    <section id="women-sports" style="background-color: #1d1a1e">
+      <div class="container py-5">
+        <div class="row">
+          <h2>Women's Sport</h2>
+
+          <div class="col-12 col-md-7">
+            <div class="d-flex flex-wrap justify-content-center">
+              <div class="p-3">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div class="p-3">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div class="p-3">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div class="p-3">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-5">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/eERyCjmQA2A?si=h7Oth85_LUNu4wO9"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
       </div>
