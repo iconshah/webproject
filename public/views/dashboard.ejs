@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <%- include('navbar', { user: user }) %> <!-- Pass the user variable here -->
+
     <h1>Hello <%= user %></h1>
     <h2>Welcome to the dashboard</h2>
     <h3>Click <a href="/users/logout">here</a> to logout</h3>

@@ -1,6 +1,6 @@
 const { pool } = require('../helpers/db.js');
 const bcrypt = require('bcrypt');
-const { sendResetEmail, generateResetToken } = require('../helpers/sendEmail.js');
+const { sendResetEmail, generateResetToken } = require('../helpers/transporter.js');
 require('dotenv').config();
 
 const register = async (req, res) => {
@@ -11,32 +11,32 @@ const register = async (req, res) => {
         if (!name || !email || !password || !password2) {
             errors.push({ message: 'Please enter all fields' });
         }
+
         if (password.length < 8) {
             errors.push({ message: 'Password must be at least 8 characters long' });
         }
+
         if (password !== password2) {
             errors.push({ message: 'Passwords do not match' });
         }
 
         if (errors.length > 0) {
-            return res.render('register', { errors, name, email, password, password2 });
-        } 
-
-        const hashedPassword = await bcrypt.hash(password, 12);
+            return res.render('register', { errors });
+        }
 
         const existingUser = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
 
         if (existingUser.rows.length > 0) {
-            return res.render('register', { message: 'Email already registered' });
+            return res.render('register', { errors: [{ message: 'Email already registered' }] });
         }
 
-        await pool.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3)', [name, email, hashedPassword]);
-
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = await pool.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *', [name, email, hashedPassword]);
         req.flash('success_msg', 'You are now registered. Please log in');
         res.redirect('/users/login');
     } catch (error) {
-        console.error('Error registering user:', error);
-        req.flash('error_msg', 'Failed to register user.');
+        console.error(error);
+        req.flash('error_msg', 'Server error');
         res.redirect('/users/register');
     }
 };
