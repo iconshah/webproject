@@ -31,7 +31,7 @@ router.get('/update/:id', checkAuthenticated, async (req, res) => {
 router.post('/update/:id', checkAuthenticated, updateBlog);
 
 // Delete a blog
-router.delete('/delete/:id', checkAuthenticated, deleteBlog);
+router.post('/delete/:id', checkAuthenticated, deleteBlog);
 
 module.exports = router;
 

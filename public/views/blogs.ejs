@@ -57,8 +57,10 @@
                                     class="btn btn-primary position-absolute top-0 end-0 m-3">Update</a>
                                 <!-- Delete Button -->
                                 <form id="deleteForm_<%= blog.id %>" action="/blogs/delete/<%= blog.id %>" method="POST">
-                                    <button type="button" onclick="confirmDelete('<%= blog.id %>')" class="btn btn-danger">Delete</button>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" onclick="return confirmDelete('<%= blog.id %>')" class="btn btn-danger">Delete</button>
                                 </form>
+                                
                                 
                             </div>
                         </div>
