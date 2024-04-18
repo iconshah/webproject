@@ -42,7 +42,6 @@ const register = async (req, res) => {
 };
 
 
-
 const emailConfirmation = async (req, res) => {
     const { email } = req.body;
     const errors = [];
