@@ -4,13 +4,14 @@ require('dotenv').config();
 
 const getAllBlogs = async (req, res) => {
     try {
-        const { rows } = await pool.query('SELECT * FROM blogs');
+        const { rows } = await pool.query('SELECT * FROM blogs ORDER BY created_at DESC');
         res.render('blogs', { blogs: rows, title: 'List of Blogs', user: req.user, body: 'Content of the blogs page' });
     } catch (error) {
         console.error('Error fetching blogs:', error);
         res.render('blogs', { errors: [{ message: 'Error fetching blogs' }], body: 'Error content' });
     }
 };
+
 
 const getBlogById = async (req, res) => {
     const { id } = req.params;
