@@ -45,8 +45,10 @@ const updateBlog = async (req, res) => {
             return res.status(404).send('Blog not found');
         }
 
-        res.redirect(`/blogs/all`, { success_msg: 'Blog updated successfully' , user:req.user, body: 'Content of the blog detail page' , title: 'Blog updated successfully', blog: rows[0], user: req.user });
+        req.flash('success_msg', 'Blog updated successfully');
+        res.redirect('/blogs/all');
     } catch (error) {
+
         console.error('Error updating blog:', error);
         res.status(500).send('Internal server error');
     }
