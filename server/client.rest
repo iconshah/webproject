@@ -8,3 +8,41 @@ Content-Type: application/json
 {
     "email": "stha.roman20@gmail.com"
 }
+### register
+post http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "email": "stha.roman20@outlook.com",
+    "password": "123456",
+    "name": "Roman",
+    "password2": "123456"
+}
+
+### login
+post http://localhost:3000/users/login 
+Content-Type: application/json
+
+{
+    "email": "stha.roman20@outlook.com",
+    "password": "123456"
+}
+
+### get all blogs
+get http://localhost:3000/blogs/all
+
+### get blog by id
+get http://localhost:3000/blogs/1
+
+### delete blog
+DELETE http://localhost:3000/blogs/delete/1 HTTP/1.1
+
+### create blog
+POST http://localhost:3000/blogs/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "My first blog",
+    "content": "This is my first blog",
+    "author_id": 1
+}
