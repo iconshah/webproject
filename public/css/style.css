@@ -1,28 +1,44 @@
-/* Add your custom styles here */
 .navbar-brand img {
-  max-height: 35px;
+  max-height: 40px;
 }
-
-.navbar-toggler {
-  border: none;
+.navbar-fixed-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: black;
 }
-
-.navbar-nav .nav-link {
-  color: #e0e0e2;
+.owl-carousel span {
+  /* background-color: white; */
+  color: white !important;
+  font-size: 35px;
 }
-
-.navbar-nav .nav-link:hover {
-  color: #007bff;
+iframe {
+  border-radius: 15px;
 }
-
-.bi {
-  font-size: 1.2rem;
-  margin-right: 5px;
+body {
+  background-color: black;
+}
+.btn-rounded {
+  border-radius: 20px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+  color: white;
+}
+#navBar a {
+  color: white;
 }
 
 /* Custom background color */
 .bg-custom {
-  background-color: #0b6e4f; /* Specify your custom color here */
+  background-color: #000000; /* Specify your custom color here */
 }
 
 .card {
@@ -48,15 +64,11 @@
 .delete-button {
   position: absolute;
 }
-/* .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-} */
 h1 {
   margin-bottom: 20px;
   color: #007bff;
 }
 p {
   font-size: 1.1rem;
+  color: white;
 }
