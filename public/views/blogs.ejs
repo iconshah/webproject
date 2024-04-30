@@ -1,65 +1,99 @@
-<!-- views/blogs.ejs -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>List of Blogs</title>
+    <link rel="stylesheet" href="/css/style.css" />
     <!-- External Stylesheet -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Custom Styles -->
-    <style>
-        /* Add your custom styles here */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            color: #343a40;
-        }
-        .card {
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .blog-title {
-            color: #007bff;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-        .blog-content {
-            font-size: 1.1rem;
-        }
-        .author-info {
-            font-size: 0.9rem;
-        }
-        .created-at {
-            font-size: 0.9rem;
-        }
-    </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <%- include('navbar') %> <!-- Pass the user variable here -->
+    <link rel="stylesheet" href="../css/style.css" />
     
+    <style></style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <section id="navBar" class="navbar-fixed-top">
+      <%- include('navbar', { user: user }) %>
+      <!-- Pass the user variable here -->
+    </section>
+
     <!-- Center Content -->
-    <div class="d-flex justify-content-center">
+    <div class="continer mt-5 pt-5">
+      <div class="d-flex justify-content-center">
         <!-- Main Content -->
         <div class="container">
-            <h1 class="mb-4 text-center">List of Blogs</h1>
-            <div class="row">
-                <% blogs.forEach(blog => { %>
-                <div class="col-md-8 mx-auto mb-4">
-                    <a href="/blogs/<%= blog.id %>" class="card p-3 text-decoration-none">
-                        <h2 class="card-title blog-title"><%= blog.title %></h2>
-                        <p class="card-text blog-content"><%= blog.content %></p>
-                        <p class="card-text author-info">Author ID: <%= blog.author_id %></p>
-                        <p class="card-text created-at">Created At: <%= blog.created_at %></p>
-                    </a>
-                </div>
-                <% }); %>
+          <h1 class="mb-4 text-center">List of Blogs</h1>
+          <div class="row">
+            <div class="mb-3 text-center">
+              <% if (messages && messages.success_msg) { %>
+              <div class="alert alert-success" role="alert">
+                <%= messages.success_msg %>
+              </div>
+              <% } %> <% if (messages && messages.error) { %>
+              <div class="alert alert-danger" role="alert">
+                <%= messages.error %>
+              </div>
+              <% } %>
             </div>
+            <% blogs.forEach(blog=> { %>
+            <div class="col-md-8 mx-auto mb-4">
+              <div class="card p-3 position-relative">
+                <a href="/blogs/<%= blog.id %>" class="text-decoration-none">
+                  <h2 class="card-title blog-title"><%= blog.title %></h2>
+                  <p class="card-text blog-content"><%= blog.content %></p>
+                  <p class="card-text author-info">
+                    Author ID: <%= blog.author_id %>
+                  </p>
+                  <p class="card-text created-at">
+                    Created At: <%= blog.created_at %>
+                  </p>
+                </a>
+
+                <!-- Update Button -->
+                <a
+                  href="/blogs/update/<%= blog.id %>"
+                  class="btn btn-primary position-absolute top-0 end-0 m-3"
+                  >Update</a
+                >
+                <!-- Delete Button -->
+                <form
+                  id="deleteForm_<%= blog.id %>"
+                  action="/blogs/delete/<%= blog.id %>"
+                  method="POST"
+                >
+                  <input type="hidden" name="_method" value="DELETE" />
+                  <button
+                    type="submit"
+                    onclick="return confirmDelete('<%= blog.id %>')"
+                    class="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </form>
+              </div>
+            </div>
+            <% }); %>
+          </div>
         </div>
+      </div>
     </div>
-    
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+
+    <!-- Custom Script -->
+    <script>
+      function confirmDelete(blogId) {
+        if (confirm("Are you sure you want to delete this blog?")) {
+          document.getElementById("deleteForm_" + blogId).submit();
+        }
+      }
+    </script>
+  </body>
 </html>

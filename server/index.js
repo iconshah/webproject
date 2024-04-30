@@ -9,6 +9,7 @@ const authRoutes = require('./routes/authRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 require('dotenv').config();
 
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -18,8 +19,8 @@ app.set('view engine', 'ejs');
 
 // Middleware
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: false }));
 
 // Session middleware
 app.use(session({
@@ -40,7 +41,7 @@ app.use('/blogs', blogRoutes);
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something broke!');
+  res.status(500).send(err.message);
 });
 
 // serve static files
