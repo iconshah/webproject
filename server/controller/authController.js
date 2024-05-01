@@ -133,6 +133,13 @@ const updateProfile = async (req, res) => {
         // Update the user's name and email
         req.user.name = name;
         req.user.email = email;
+        // Update the user's name and email in the database
+        await pool.query('UPDATE users SET name = $1, email = $2 WHERE id = $3', [name, email, req.user.id]);
+        const user = req.user; // Assuming you have authentication middleware to get the logged-in user
+        user.profileImage = req.file.path; // Save the path to the profile image
+        await user.save();
+        // Redirect the user to the profile page with a success message
+
         req.flash('success_msg', 'Profile updated successfully');
         res.redirect('/users/profile');
     } catch (error) {

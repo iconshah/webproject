@@ -61,9 +61,8 @@
                       <%= blog.title %>
                     </h2>
                     <p class="card-text blog-content"><%= blog.content %></p>
-                    <p class="card-text author-info">
-                      Author ID: <%= blog.author_id %>
-                    </p>
+                    <p class="card-text author-info">Author: <%= blog.author_id %></p>
+
                     <p class="card-text created-at">
                       Created At: <%= blog.created_at.toLocaleDateString() %>
                     </p>
@@ -126,5 +125,7 @@
         }
       }
     </script>
+    <!-- extend the footer -->
+    <%- include('footer') %>
   </body>
 </html>

@@ -4,30 +4,37 @@ const { register, emailConfirmation, resetPassword, profile, updateProfile } = r
 const router = express.Router();
 const passport = require('../helpers/passport-config');
 const { pool } = require('../helpers/db');
-
+const upload = require('../helpers/multer-config');
 // Home route
-router.get('/', (req, res) => {
-    // render the list of latetst blogs here
-    const query = 'SELECT * FROM blogs ORDER BY created_at DESC';
-    pool.query(query, (err, result) => {
-        if (err) {
-            console.error('Error fetching blogs:', err);
-            return res.render('index', { errors: [{ message: 'Error fetching blogs' }] });
-        }
-        res.render('index', { blogs: result.rows, user: req.user });
-    });
+// Home route
+router.get('/', async (req, res) => {
+    try {
+        const blogQuery = `
+            SELECT blogs.id, blogs.title, blogs.content, users.name AS author_name, blogs.created_at
+            FROM blogs
+            JOIN users ON blogs.author_id = users.id
+            ORDER BY blogs.created_at DESC
+        `;
+        const blogResult = await pool.query(blogQuery);
+        const blogs = blogResult.rows;
 
-    // render the list of upcoming events here
-    const query2 = 'SELECT * FROM sport_events ORDER BY event_date ASC';
-    pool.query(query2, (err, result) => {
-        if (err) {
-            console.error('Error fetching events:', err);
-            return res.render('index', { errors: [{ message: 'Error fetching events' }] });
-        }
-        res.render('index', { events: result.rows, user: req.user });
-    });
+        const eventQuery = `
+            SELECT * FROM sport_events
+            WHERE event_date >= NOW()
+            ORDER BY event_date ASC
+            LIMIT 5
+        `;
+        const eventResult = await pool.query(eventQuery);
+        const events = eventResult.rows;
 
+        res.render('index', { blogs, events, user: req.user });
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).render('index', { errors: [{ message: 'Internal server error' }] });
+    }
 });
+
+
 
 // Dashboard route
 router.get('/users/dashboard', checkAuthenticated, (req, res) => {
@@ -86,6 +93,8 @@ router.post('/users/email-confirmation', checkNotAuthenticated, emailConfirmatio
     res.redirect('/users/login');
 });
 
+
+
 // Logout route
 router.get('/users/logout', function (req, res, next) {
     req.logout(function (err) {
@@ -96,7 +105,8 @@ router.get('/users/logout', function (req, res, next) {
     });
 });
 
-
+// upload profile picture
+router.post('/profile', upload.single('profileImage'), updateProfile);
 
 router.get('/blogs/create', checkAuthenticated, (req, res) => {
     res.render('createBlog', { user: req.user });
@@ -104,20 +114,29 @@ router.get('/blogs/create', checkAuthenticated, (req, res) => {
 
 // Create a blog (POST request)
 router.post('/blogs/create', async (req, res) => {
-    const { title, content, author_id } = req.body;
+    const { title, content } = req.body;
+    const author_id = req.user.id; // Assuming you have a user object with an ID property
+
     console.log('Received request to create a blog:', { title, content, author_id });
 
     try {
-        const query = 'INSERT INTO blogs (title, content, author_id) VALUES ($1, $2, $3) RETURNING *';
+        const query = `
+            INSERT INTO blogs (title, content, author_id) 
+            VALUES ($1, $2, $3) 
+            RETURNING *, 
+            (SELECT name FROM users WHERE id = $3) AS author_name`; // Subquery to fetch author name
         const values = [title, content, author_id];
         const { rows } = await pool.query(query, values);
         console.log('New blog created:', rows[0]);
-        res.redirect('/blogs/all', { user: req.user }, {success_msg: 'Blog created successfully'});
+        req.flash('success_msg', 'Blog created successfully');
+        res.redirect('/blogs/all');
     } catch (error) {
         console.error('Error creating blog:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        req.flash('error', 'Internal server error');
+        res.redirect('/blogs/all');
     }
 });
+
 
 
 

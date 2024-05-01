@@ -37,6 +37,8 @@
                 method="post"
                 enctype="multipart/form-data"
               >
+              <img src="<%= user.profileImage %>" alt="Profile Image">
+
                 <div class="form-group mb-3">
                   <label for="username">Username</label>
                   <input
@@ -75,6 +77,14 @@
                     name="confirm-password"
                   />
                 </div>
+                <div class="form-group form-control ">
+                  <label for="profile-image">Profile Image</label>
+                  <input
+                    class="form-control"
+                    type="file"
+                    id="profile-image"
+                    name="profile-image"
+                  />
                 <div class="form-group text-center">
                   <button class="btn btn-outline-info" type="submit">
                     Update
