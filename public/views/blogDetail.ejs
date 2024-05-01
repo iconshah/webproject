@@ -5,6 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog Detail</title>
+    <link
+      rel="icon"
+      href="../images/favicon.png"
+      height=""
+      width=""
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="/css/style.css" />
     <!-- External Stylesheet -->
     <link
@@ -13,9 +20,9 @@
     />
     <!-- Custom Styles -->
     <style>
-     body{
-        background-color: white !important;
-     }
+      body {
+        background-color: rgb(0, 0, 0) !important;
+      }
       .blog-detail {
         margin: 0 auto;
         margin-top: 50px;
@@ -35,11 +42,11 @@
       .created-at {
         font-size: 0.9rem;
       }
-      p{
+      p {
         color: black !important;
       }
     </style>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <!-- Navbar -->
@@ -48,55 +55,23 @@
       <!-- Pass the user variable here -->
     </section>
 
-    <section class="blog-detail mt-5 pt-5 ">
+    <section class="blog-detail mt-5 pt-5">
       <!-- Main Content -->
-      <div class="container-fluid">
+      <div class="container-fluid mt-5">
         <h1 class="mb-4 text-center">Blog Detail</h1>
         <div class="row">
           <div class="col-md-8 mx-auto mb-4">
-            <div class="card p-3 border-0">
-              <h2 class="card-title blog-title"><%= blog.title %></h2>
-              <p class="card-text blog-content"><%= blog.content %></p>
-              <p class="card-text author-info">
+            <div class="card p-5 border-0" style="background-color: #1d1a1e;">
+              <h2 class="card-title blog-title text-white"><%= blog.title %></h2>
+              <hr style="color: aliceblue;">
+              <p class="card-text blog-content text-white"><%= blog.content %></p>
+              <p class="card-text author-info text-white">
                 Author ID: <%= blog.author_id %>
               </p>
-              <p class="card-text created-at">
-                Created At: <%= blog.created_at %>
+              <p class="card-text created-at text-white">
+                Created At: <%= blog.created_at.toLocaleDateString() %>
               </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-                nihil sunt ipsam fugiat quisquam molestiae totam rem nulla,
-                pariatur temporibus nobis labore hic similique repudiandae
-                consequuntur. Error, voluptatem, perferendis cumque facilis
-                fugit quis deleniti exercitationem nam, asperiores porro
-                corporis dolorem quas ut sed beatae sint ipsam voluptates
-                tempore. Voluptates dolorem corporis velit? Voluptatum sint
-                commodi unde ad reprehenderit hic facilis. Libero esse quasi
-                suscipit quis, molestias aliquam impedit aliquid a enim dicta,
-                neque ullam nam illum aspernatur fugit odit incidunt ex
-                obcaecati reprehenderit, quisquam explicabo iure architecto? Eos
-                quas, maxime alias tempore odio, minima rerum doloribus deleniti
-                nulla blanditiis necessitatibus consectetur recusandae officiis
-                tempora culpa, magnam reprehenderit sint ea voluptatem inventore
-                assumenda animi! Nesciunt odio corrupti quasi debitis quas
-                tenetur reiciendis dignissimos doloremque delectus officia
-                molestias, accusantium iusto, vero vel fuga voluptatem earum
-                praesentium? Illum ipsa beatae nobis laboriosam, aut provident
-                ut quaerat autem consequuntur, odio possimus vel aliquid debitis
-                quasi soluta commodi repellendus alias, libero voluptas natus a
-                atque laudantium est perspiciatis! Praesentium optio mollitia
-                sed repudiandae quibusdam reprehenderit consectetur iste, odit
-                beatae natus ducimus possimus. Necessitatibus nulla deleniti
-                nihil nam vel perferendis? Beatae, ab minus possimus ipsum illum
-                reprehenderit incidunt repudiandae. Aut molestiae sed nulla
-                perspiciatis ducimus commodi harum dolor alias minima odit porro
-                architecto, dignissimos officiis nam ipsam quisquam molestias
-                consequuntur, tenetur vero suscipit enim aliquam expedita.
-                Debitis iusto maiores animi, ut atque delectus, illo odio beatae
-                corporis quidem doloribus. Ipsa repudiandae possimus id, illo
-                optio tempore, sequi ullam sapiente quibusdam cupiditate
-                recusandae, nisi tenetur excepturi alias?
-              </p>
+              
             </div>
           </div>
         </div>
