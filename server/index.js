@@ -47,8 +47,6 @@ app.use((err, req, res, next) => {
 // serve static files
 app.use(express.static(path.join(__dirname, '../public')));
 
-// server upload files directory
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Start server
 app.listen(port, () => {

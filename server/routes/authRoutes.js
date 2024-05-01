@@ -4,7 +4,6 @@ const { register, emailConfirmation, resetPassword, profile, updateProfile } = r
 const router = express.Router();
 const passport = require('../helpers/passport-config');
 const { pool } = require('../helpers/db');
-const upload = require('../helpers/multer-config');
 // Home route
 // Home route
 router.get('/', async (req, res) => {
@@ -24,10 +23,8 @@ router.get('/', async (req, res) => {
             ORDER BY event_date ASC
             LIMIT 5
         `;
-        const eventResult = await pool.query(eventQuery);
-        const events = eventResult.rows;
 
-        res.render('index', { blogs, events, user: req.user });
+        res.render('index', { blogs,  user: req.user });
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).render('index', { errors: [{ message: 'Internal server error' }] });
@@ -106,7 +103,6 @@ router.get('/users/logout', function (req, res, next) {
 });
 
 // upload profile picture
-router.post('/profile', upload.single('profileImage'), updateProfile);
 
 router.get('/blogs/create', checkAuthenticated, (req, res) => {
     res.render('createBlog', { user: req.user });
