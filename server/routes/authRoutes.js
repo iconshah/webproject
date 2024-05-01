@@ -7,7 +7,26 @@ const { pool } = require('../helpers/db');
 
 // Home route
 router.get('/', (req, res) => {
-    res.render('index', { user: req.user });
+    // render the list of latetst blogs here
+    const query = 'SELECT * FROM blogs ORDER BY created_at DESC';
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.error('Error fetching blogs:', err);
+            return res.render('index', { errors: [{ message: 'Error fetching blogs' }] });
+        }
+        res.render('index', { blogs: result.rows, user: req.user });
+    });
+
+    // render the list of upcoming events here
+    const query2 = 'SELECT * FROM sport_events ORDER BY event_date ASC';
+    pool.query(query2, (err, result) => {
+        if (err) {
+            console.error('Error fetching events:', err);
+            return res.render('index', { errors: [{ message: 'Error fetching events' }] });
+        }
+        res.render('index', { events: result.rows, user: req.user });
+    });
+
 });
 
 // Dashboard route
