@@ -1,0 +1,22 @@
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "admin123"
+}
+
+### Register a new user
+POST http://localhost:5000/users/register
+Content-Type: application/json
+
+{
+  "name": "fsdjfasd",
+  "email": "stha.roman@gmail.com",
+  "password": "root123",
+  "password2": "root123"
+}
+
+
+### delete a user
+DELETE http://localhost:5000/users/delete/5

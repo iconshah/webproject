@@ -1,0 +1,8 @@
+node_modules/
+<<<<<<< HEAD
+.env
+
+
+=======
+dotenv/
+>>>>>>> 940415e693b8bb5bf26d5ca9a21a0a7249843fc1

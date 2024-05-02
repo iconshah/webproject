@@ -1,0 +1,59 @@
+<!-- partials/navbar.ejs -->
+<nav class="navbar navbar-expand-lg navbar-light bg-custom">
+  <div class="container py-0">
+    <a class="navbar-brand" href="/">
+      <img src="/images/sportssync.png" alt="Your Logo" class="logo" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon whatdafak"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blogs/all">All Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/about"> About Us </a>
+        </li>
+        <!-- if user is loggid in -->
+        <% if (user) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/blogs/create">Create</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/profile">Profile</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/users/logout">Logout</a>
+        </li>
+
+        <% } else { %>
+        <!-- if user is not logged in -->
+        <li class="nav-item">
+          <a class="nav-link" href="/users/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/register">Register</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style>
+  
+
+</style>
