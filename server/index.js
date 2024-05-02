@@ -1,39 +1,54 @@
 const express = require('express');
-const path = require('path'); // Import path for file paths
-const session = require('express-session'); // Import express-session for session management
-const flash = require('express-flash'); // Import express-flash for flash messages like You are now registered. Please log in
-const passport = require('passport');  // Import passport for authentication
-const initializePassport = require('./passportConfig'); // Import the initializePassport function from passportConfig.js
-const userRouter = require('./routes/user'); // Import the userRouter from routes/user.js
+const path = require('path');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const flash = require('express-flash');
+const passport = require('./helpers/passport-config');
+const authRoutes = require('./routes/authRoutes');
+const blogRoutes = require('./routes/blogRoutes');
+require('dotenv').config();
+
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Set the view engine to EJS and the views directory to ../public/views
-app.set('view engine', 'ejs');
+// Set views directory and view engine
 app.set('views', path.join(__dirname, '../public/views'));
+app.set('view engine', 'ejs');
 
-// Middleware setup
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// Middleware
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Session middleware
 app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
 }));
+
+// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-initializePassport(passport); 
+// Routes
+app.use('/', authRoutes);
+app.use('/blogs', blogRoutes);
 
-// Serve static files from the public directory
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send(err.message);
+});
+
+// serve static files
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Routes
-app.use('/', userRouter); // Mount the userRouter at root level
 
-// Start the server
+// Start server
 app.listen(port, () => {
-    console.log(`Server running on port http://localhost:${port}`);
+  console.log(`Example app listening on http://localhost:${port}`);
 });
