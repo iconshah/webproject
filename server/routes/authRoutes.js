@@ -45,8 +45,8 @@ router.get('/users/profile', checkAuthenticated, profile);
 router.post('/users/profile', checkAuthenticated, updateProfile);
 
 // About route
-router.get('/users/about', checkAuthenticated, (req, res) => {
-    res.render('aboutUs', { user: req.user.name });
+router.get('/users/about',  (req, res) => {
+    res.render('aboutUs', { user: req.user });
 });
 
 // Login route
