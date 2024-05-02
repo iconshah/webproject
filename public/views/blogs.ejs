@@ -32,9 +32,18 @@
     <section id="navBar" class="navbar-fixed-top">
       <!-- Pass the user variable here -->
     </section>
+    <section class="mt-5 pt-5">
+      <div class="py-5 position-relative">
+        <div class="background-image-cut"></div>
+          <div class="container py-4 pb-md-5 text-light position-relative"> <!-- Added pb-md-5 for bottom padding -->
+              <h1 class="display-3 mt-md-0" style="font-weight: 500;">
+                Unlocking a treasure trove of diverse insights, stories, and inspiration.</h1>
+          </div>
+      </div>
+    </section>
 
     <!-- Center Content -->
-    <section class="mt-5 pt-1">
+    <section class="mt-5">
       <div class="continer mt-5 pt-5">
         <div class="d-flex justify-content-center">
           <!-- Main Content -->
@@ -56,17 +65,39 @@
               <div class="col-md-8 mx-auto mb-4">
                 <div class="card p-3 position-relative">
                   <a href="/blogs/<%= blog.id %>" class="text-decoration-none">
-                    <h2 class="card-title blog-title text-dark">
-                      <%= blog.title %>
+                    <h2 class="card-title blog-title text-dark me-5 pe-5">
+                     <strong>#</strong><strong><%= blog.title %></strong>
                     </h2>
-                    <p class="card-text blog-content"><%= blog.content %></p>
-                    <p class="card-text author-info">Author: <%= blog.author_id %></p>
+                    <p class="card-text blog-content pt-3">
+                      <% if (blog.content.length > 150) { %> <%=
+                      blog.content.substring(0, 250) + '...' %> <% } else { %>
+                      <%= blog.content %> <% } %>
+                    </p>
+                    <div class="row text-end me-4">
 
-                    <p class="card-text created-at">
+                    <p class="card-text author-info pb-3">
+                      Author: <%= blog.author_id %>
+                      <br />
+
                       Created At: <%= blog.created_at.toLocaleDateString() %>
                     </p>
                   </a>
-
+                  <!-- Delete Button -->
+                    <form
+                      id="deleteForm_<%= blog.id %>"
+                      action="/blogs/delete/<%= blog.id %>"
+                      method="POST"
+                    >
+                      <input type="hidden" name="_method" value="DELETE" />
+                      <button
+                        type="submit"
+                        onclick="return confirmDelete('<%= blog.id %>')"
+                        class="btn btn-danger"
+                      >
+                        Delete
+                      </button>
+                    </form>
+                  </div>
                   <!-- Update Button -->
                   <a
                     href="/blogs/update/<%= blog.id %>"
@@ -89,22 +120,6 @@
                       />
                     </svg>
                   </a>
-
-                  <!-- Delete Button -->
-                  <form
-                    id="deleteForm_<%= blog.id %>"
-                    action="/blogs/delete/<%= blog.id %>"
-                    method="POST"
-                  >
-                    <input type="hidden" name="_method" value="DELETE" />
-                    <button
-                      type="submit"
-                      onclick="return confirmDelete('<%= blog.id %>')"
-                      class="btn btn-danger"
-                    >
-                      Delete
-                    </button>
-                  </form>
                 </div>
               </div>
               <% }); %>

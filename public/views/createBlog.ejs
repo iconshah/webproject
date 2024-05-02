@@ -28,38 +28,52 @@
       <%- include('navbar', { user: user }) %>
       <!-- Pass the user variable here -->
     </section>
-    <!-- Main Content -->
-    <div class="container mt-5 pt-5">
-      <div class="card p-3">
-        <h1 class="mb-4 text-center text-dark">Create a Blog</h1>
-        <div class="form-container">
-          <form action="/blogs/create" method="POST">
-            <div class="form-group">
-              <label for="title" class="form-label">Title</label>
-              <input
-                type="text"
-                class="form-control"
-                id="title"
-                name="title"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="content" class="form-label">Content</label>
-              <textarea
-                class="form-control"
-                id="content"
-                name="content"
-                rows="6"
-                required
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+    <section class="mt-5 pt-5">
+      <div class="py-5 position-relative">
+        <div class="background-image-create"></div>
+        <div class="container py-4 pb-md-5 text-light position-relative">
+          <!-- Added pb-md-5 for bottom padding -->
+          <h1 class="display-3 mt-md-0" style="font-weight: 500">
+            Unraveling stories, sparking curiosity, and inspiring meaningful
+            connections in every post.
+          </h1>
         </div>
       </div>
-    </div>
+    </section>
+    <!-- Main Content -->
+    <section class="my-5">
+      <h1 class="mb-4 text-center text-white mt-5 pt-5">Create a Blog</h1>
+      <div class="container mt-5">
+        <div class="card p-3">
+          <div class="form-container">
+            <form action="/blogs/create" method="POST">
+              <div class="form-group">
+                <label for="title" class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  name="title"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="content" class="form-label">Content</label>
+                <textarea
+                  class="form-control"
+                  id="content"
+                  name="content"
+                  rows="6"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary mt-5">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- extend the footer -->
     <%- include('footer') %>
     <!-- Bootstrap JS -->
