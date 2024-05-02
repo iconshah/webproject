@@ -41,6 +41,7 @@ const register = async (req, res) => {
     }
 };
 
+
 const emailConfirmation = async (req, res) => {
     const { email } = req.body;
     const errors = [];
@@ -106,9 +107,50 @@ const resetPassword = async (req, res) => {
         res.redirect(`/users/reset-password/${token}`);
     }
 };
+// profile route
+const profile = async (req, res) => {
+    try {
+        // Fetch user data from the database based on the user's ID (assuming you have the user ID stored in req.user.id)
+        const { rows } = await pool.query('SELECT * FROM users WHERE id = $1', [req.user.id]);
+
+        // Check if the user exists
+        if (rows.length === 0) {
+            return res.status(404).send('User not found');
+        }
+
+        // Pass the user data to the profile view
+        res.render('profile', { user: rows[0], title: 'Profile' }); // Pass the title variable
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+        res.status(500).send('Internal server error');
+    }
+};
+
+// profile update
+const updateProfile = async (req, res) => {
+    const { name, email } = req.body;
+    try {
+        // Update the user's name and email
+        req.user.name = name;
+        req.user.email = email;
+        // Update the user's name and email in the database
+        await pool.query('UPDATE users SET name = $1, email = $2 WHERE id = $3', [name, email, req.user.id]);
+        const user = req.user; // Assuming you have authentication middleware to get the logged-in user
+        user.profileImage = req.file.path; // Save the path to the profile image
+        await user.save();
+        // Redirect the user to the profile page with a success message
+
+        req.flash('success_msg', 'Profile updated successfully');
+        res.redirect('/users/profile');
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        req.flash('error', 'Error updating profile');
+        res.redirect('/users/profile');
+    }
+};
 
 module.exports = {
     register,
     emailConfirmation,
-    resetPassword
+    resetPassword, profile, updateProfile
 };

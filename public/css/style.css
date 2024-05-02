@@ -1,4 +1,79 @@
-/* login page */
+
+.navbar-brand img {
+  max-height: 100px;
+}
+.navbar-fixed-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: black;
+}
+.owl-carousel span {
+  /* background-color: white; */
+  color: white !important;
+  font-size: 35px;
+}
+iframe {
+  border-radius: 15px;
+}
+body {
+  background-color: black;
+}
+.btn-rounded {
+  border-radius: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+  color: white;
+}
+#navBar a {
+  color: white;
+}
+
+/* Custom background color */
+.bg-custom {
+  background-color: #000000; /* Specify your custom color here */
+}
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ensure the card is positioned relatively */
+}
+.blog-title {
+  color: #007bff;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.blog-content {
+  color: #343a40;
+  font-size: 1.1rem;
+}
+.author-info {
+  font-size: 0.9rem;
+}
+.created-at {
+  font-size: 0.9rem;
+}
+.delete-button {
+  position: absolute;
+}
+h1 {
+  margin-bottom: 20px;
+  
+}
+p {
+  font-size: 1.1rem;
+  color: white;
+}
 a{
-    text-decoration: none;
+  text-decoration: none;
 }
